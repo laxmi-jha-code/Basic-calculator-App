@@ -1,144 +1,120 @@
-import React,{useState} from "react";
-import {Text,View,StyleSheet,TouchableOpacity} from 'react-native'
+import React from 'react';
+import { View, Text, Image, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 
-const App=()=>{
-  const[input,setInput]= useState("")
-  const[result,setResult] = useState("")
-  
-  const handlepress=(value:any)=>{
-    if(value=='C')
-    {
-      setInput("")
-      setResult("")
-    }
-    else if (value == '=')
-      try{
-      setResult(eval(input).toString())
-      }catch{
-        setResult("Error")
-      }
-      else if(value == 'Del')
-        setInput(input.slice(0,-1))
-    else{
-      setInput(input+value)
-    }
-  }
-  return(
-  <View style={styles.container}>
-    <View style={styles.input}>
-    <Text style={styles.inputtxt}>{input}</Text>
-    <Text style={styles.resulttxt}>{result}</Text>
-    </View>
-    <View style={styles.buttons}>
-      <View style={styles.row}>
-      <TouchableOpacity onPress={()=>handlepress('9')}  style={styles.button}>
-        <Text style={styles.btntxt}>9</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('8')}  style={styles.button}>
-        <Text style={styles.btntxt}>8</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('7')}  style={styles.button}>
-        <Text style={styles.btntxt}>7</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('C')}  style={styles.button}>
-        <Text style={styles.btntxt}>C</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('Del')}  style={styles.button}>
-        <Text style={styles.btntxt}>Del</Text>
-      </TouchableOpacity>
-    </View>
-    <View style={styles.row}> 
-      <TouchableOpacity onPress={()=>handlepress('6')}  style={styles.button}>
-        <Text style={styles.btntxt}>6</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('5')}  style={styles.button}>
-        <Text style={styles.btntxt}>5</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('4')}  style={styles.button}>
-        <Text style={styles.btntxt}>4</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('+')}  style={styles.button}>
-        <Text style={styles.btntxt}>+</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('-')}  style={styles.button}>
-        <Text style={styles.btntxt}>-</Text>
-      </TouchableOpacity>
-    </View>
-    <View style={styles.row}>
-     <TouchableOpacity onPress={()=>handlepress('3')}  style={styles.button}>
-      <Text style={styles.btntxt}>3</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('2')}  style={styles.button}>
-        <Text style={styles.btntxt}>2</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('1')}  style={styles.button}>
-        <Text style={styles.btntxt}>1</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('*')}  style={styles.button}>
-        <Text style={styles.btntxt}>*</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('/')}  style={styles.button}>
-        <Text style={styles.btntxt}>/</Text>
-      </TouchableOpacity>
-    </View>
-    <View style={styles.row}>
-      <TouchableOpacity onPress={()=>handlepress('0')}  style={styles.button}>
-      <Text style={styles.btntxt}>0</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('00')}  style={styles.button}>
-        <Text style={styles.btntxt}>00</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={()=>handlepress('=')} style={styles.button}>
-        <Text style={styles.btntxt}>=</Text>
-     </TouchableOpacity>
-    </View>
-    </View>
-  </View>
-  )
-}
-const styles=StyleSheet.create({
-container:{
-  flex:1,
-  backgroundColor:'black',
-  justifyContent:'center'
-},
-input:{
-  justifyContent:'flex-end',
-  margin:20,
-  padding:20
-},
-inputtxt:{
-  fontSize:20,
-  color:'white',
-  textAlign:'right',
-},
-resulttxt:{
-  fontSize:24,
-  color:'green',
-  textAlign:'right',
-},
-buttons:{
-  padding:20,
-  margin:5
-},
-row:{
-  flexDirection:'row',
-  justifyContent:'space-around',
-  marginBottom:20,
+const App = () => {
+  return (
+    <ScrollView style={styles.container}>
+      
+      <View style={styles.header}>
+         <Text style={styles.logo}>PADHNEAI</Text>
+        <View style={styles.menu}>
+          <TouchableOpacity style={styles.opacity}>
+          <Text style={styles.menuText}>SEE Past Papers</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.opacity}>
+          <Text style={styles.menuText}>AI Assistant</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.opacity}>
+          <Text style={styles.menuText}>Sign In</Text>
+          </TouchableOpacity>
+        </View>
+      </View>
 
+      
+      <View style={styles.heroSection}>
+        <View style={styles.textContainer}>
+          <Text style={styles.mainTitle}>Nepal’s All-in-One Learning Platform</Text>
+          <Text style={styles.subText}>
+            Bilingual notes, question banks, AI-powered study support, and online courses—
+            everything Nepali students need to learn, prepare, and succeed.
+          </Text>
+          </View>
 
-},
-button:{
-  backgroundColor:'grey',
-  borderRadius:12,
-  height:50,
-  width:50,
+        <Image
+          source={require('./Image/student2.webp')} 
+          style={styles.heroImage}
+        />
+      </View>
+    </ScrollView>
+  );
+};
 
-},
-btntxt:{
-  fontSize:25,
-  color:'black',
-  textAlign:'center'
-}
-})
-export default App
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+  },
+  header: {
+    marginTop: 40,
+    marginHorizontal: 20,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  logo: {
+    fontSize: 24,
+    fontWeight: '700',
+    color: '#214F5F',
+  },
+  menu: {
+    flexDirection: 'row',
+    gap: 15,
+  },
+  menuText: {
+    color: '#333',
+    fontSize: 14,
+  },
+  opacity:{
+    borderRadius:10,
+    borderColor:'black',
+    backgroundColor:'#D3D3D3',
+    elevation:2
+  },
+  heroSection: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    padding: 20,
+    justifyContent: 'space-between',
+  },
+  textContainer: {
+    flex: 1,
+    paddingRight: 10,
+  },
+  mainTitle: {
+    fontSize: 32,
+    fontWeight: '800',
+    color: '#214F5F',
+    marginBottom: 10,
+  },
+  subText: {
+    fontSize: 15,
+    color: '#555',
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  redButton: {
+    backgroundColor: '#E94E4E',
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    borderRadius: 8,
+  },
+  blueButton: {
+    backgroundColor: '#2D7D9A',
+    paddingVertical: 10,
+    paddingHorizontal: 18,
+    borderRadius: 8,
+  },
+  btnText: {
+    color: '#fff',
+    fontWeight: '600',
+  },
+  heroImage: {
+    width: 180,
+    height: 180,
+  },
+});
+
+export default App;
