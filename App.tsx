@@ -91,26 +91,7 @@ const styles = StyleSheet.create({
     color: '#555',
     marginBottom: 20,
   },
-  buttonContainer: {
-    flexDirection: 'row',
-    gap: 10,
-  },
-  redButton: {
-    backgroundColor: '#E94E4E',
-    paddingVertical: 10,
-    paddingHorizontal: 18,
-    borderRadius: 8,
-  },
-  blueButton: {
-    backgroundColor: '#2D7D9A',
-    paddingVertical: 10,
-    paddingHorizontal: 18,
-    borderRadius: 8,
-  },
-  btnText: {
-    color: '#fff',
-    fontWeight: '600',
-  },
+  
   heroImage: {
     width: 180,
     height: 180,
